@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mission</title>
+    <title>About Us - HeronAI</title>
+
     <style>
-        /* Animation for section fade-in */
+        /* Keyframe animations for smooth appearance */
         @keyframes fadeIn {
             0% {
                 opacity: 0;
@@ -17,82 +18,101 @@
             }
         }
 
-        /* Floating animation for highlights */
-        @keyframes floatUp {
-            0% {
-                opacity: 1;
-                transform: translateY(-10px);
-            }
-            100% {
-                opacity: 0;
-                transform: translateY(-30px);
-            }
-        }
-
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f8f8f8;
-            color: #333;
+        /* Section styling */
+        #about-us {
+            background-color: #f9f9f9;
+            padding: 60px 20px;
+            text-align: center;
+            animation: fadeIn 1s ease-out;
         }
 
         .container {
-            width: 80%;
-            max-width: 900px;
-            margin: 50px auto;
-            padding: 20px;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
-            animation: fadeIn 0.8s ease-out;
+            max-width: 800px;
+            margin: 0 auto;
         }
 
         h1 {
-            font-size: 2rem;
-            color: #2c3e50;
-            text-align: center;
+            font-size: 2.5rem;
+            color: #333;
+            margin-bottom: 20px;
         }
 
         p {
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             line-height: 1.6;
-            margin-bottom: 15px;
+            color: #555;
         }
 
         strong {
-            color: #4CAF50; /* Green highlight */
+            color: #4CAF50; /* Matches your counter-check highlight color */
         }
 
-        /* Floating effect for key numbers */
-        .highlight {
-            position: relative;
+        /* Styling for interactive elements */
+        .counter-check {
             display: inline-block;
-            color: #4CAF50;
-            font-weight: bold;
-            animation: floatUp 1.5s ease-out forwards;
+            cursor: pointer;
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            background: #4CAF50;
+            color: white;
+            border-radius: 5px;
+            transition: 0.3s ease-in-out;
         }
+
+        .counter-check:hover {
+            background: #388E3C;
+        }
+
     </style>
 </head>
 <body>
 
-    <section id="Mission">
+    <section id="about-us">
         <div class="container">
-            <h1>Mission</h1>
+            <h1>About Us</h1>
             <p>
                 At <strong>HeronAI</strong>, we believe data analytics should be a universal right—not a privilege. Our mission is simple yet transformative: empower businesses to unlock their full potential by turning complex data into actionable insights within minutes.
             </p>
             <p>
-                Born out of frustration with tedious, inaccessible analytics tools, HeronAI was built to simplify the way mid-sized firms approach decision-making. Using proprietary algorithms, we consolidate data from multiple sources like QuickBooks and Excel, creating intuitive dashboards and action plans in under <span class="highlight">5 minutes</span>.
+                Born out of frustration with tedious, inaccessible analytics tools, HeronAI was built to simplify the way mid-sized firms approach decision-making. Using proprietary algorithms, we consolidate data from multiple sources like QuickBooks and Excel, creating intuitive dashboards and action plans in under 5 minutes.
             </p>
             <p>
-                Our vision is to impact <span class="highlight">10 million people</span> over the next decade by making data accessible to anyone, anywhere. With HeronAI, you’re not just getting a platform—you’re joining a movement to bridge the gap between untapped data and smarter, faster growth.
+                Our vision is to impact <strong>10 million people</strong> over the next decade by making data accessible to anyone, anywhere. With HeronAI, you’re not just getting a platform—you’re joining a movement to bridge the gap between untapped data and smarter, faster growth.
             </p>
             <p>
                 From saving teams hours each week to driving measurable increases in revenue, HeronAI transforms data into a competitive advantage for SMEs, accountants, and advisors. Together, we’re shaping a future where businesses thrive through simplicity, clarity, and innovation.
             </p>
+
+            <!-- Interactive Counter Element -->
+            <div class="counter-check" id="counter-first">
+                Click to Learn More
+            </div>
         </div>
     </section>
+
+    <!-- Script for interactive counter animation -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const counterCheck = document.getElementById("counter-first");
+
+            counterCheck.addEventListener("click", function () {
+                counterCheck.classList.toggle("is-active");
+
+                // Create a floating notification
+                const notification = document.createElement("div");
+                notification.classList.add("counter-check-notification");
+                notification.textContent = counterCheck.classList.contains("is-active") ? "+ Insight Unlocked" : "- Insight Hidden";
+                
+                counterCheck.appendChild(notification);
+
+                // Remove notification after animation
+                notification.addEventListener("animationend", () => {
+                    notification.remove();
+                });
+            });
+        });
+    </script>
 
 </body>
 </html>
